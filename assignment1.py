@@ -23,3 +23,34 @@ def division(data, gen):
     result = tmp
     return result
 
+import numpy as np
+def generator(input_file):
+    m,g=np.loadtxt(input_file, delimiter=" ")
+    m=str(int(m))
+    g=str(int(g))
+
+    r=len(g)-1
+    for l in range(r):
+        m=m+"0"
+
+    # print("gowa generator zawedt r zeros", m)
+
+
+    remainder=division(m,g)
+    # print("ana gowa generator abl ma",remainder)
+    #remainder=format(remainder,"b")
+    r=len(g)-1
+    bits_left= r-len(remainder)
+    zeros=""
+    if bits_left>0:
+
+        for l in range(bits_left):
+            zeros=zeros+"0"
+
+
+    m=m[:len(m)-r]
+    message= m+zeros+remainder
+    # print("ana gowa generator de el message",message,"w kaman rem",remainder)
+    return message,g
+
+
