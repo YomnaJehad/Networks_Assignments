@@ -91,8 +91,15 @@ if required=="1":#if you want generator <file | verifier
 if required=="2":#if you want generator <file | alter arg | verifier
     index=input("Enter alter index: ")
     message,g=generator("ymym.txt")
-    message=alter(message,int(index))
-    verifier(message,g)
+    if int(index) > (len(message)-len(g)):
+        print("invalid alter value")
+        pass
+    else :    
+        message=alter(message,int(index)-1)
+        verifier(message,g)
+    print("\n\n")
+    print("Try again if you want !")
+
 
 
 
