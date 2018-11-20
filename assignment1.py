@@ -65,4 +65,35 @@ def verifier(message,g):
 
 
 
+def alter(message,index):
+    message=list(message)
+    if message[index] == "0" :
+        message[index]="1"
+    else:
+        message[index]="0"
+    message = ''.join(message)
+    #print("ana gowa alter",message)
+    return message
+#-----------------------------------------------
+
+print("Welcome to YMYM Assignment1")
+print("if you want generator <file | verifier")
+print("Press 1")
+print("if you want generator <file | alter arg | verifier")
+print("Press 2")
+
+required=input()
+#print(required)
+if required=="1":
+    message,g=generator("ymym.txt")
+    verifier(message,g)
+
+if required=="2":
+    index=input("Enter alter index: ")
+    message,g=generator("ymym.txt")
+    message=alter(message,int(index))
+    verifier(message,g)
+
+
+
 
