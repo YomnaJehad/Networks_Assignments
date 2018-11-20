@@ -53,4 +53,16 @@ def generator(input_file):
     # print("ana gowa generator de el message",message,"w kaman rem",remainder)
     return message,g
 
+def verifier(message,g):
+    # print("ana gowa ver w de el mes",message)
+    rem=division(message,g)
+
+    if int(rem)==0 :
+        print("Correct output")
+    else:
+        print("Wrong output")
+    return
+
+
+
 
