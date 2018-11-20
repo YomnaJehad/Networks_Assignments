@@ -77,30 +77,29 @@ def alter(message,index): #it changes the bit of number = index in message
 #-----------------------------------------------
 #console presentation
 print("Welcome to YMYM Assignment1")
-print("if you want generator <file | verifier")
-print("Press 1")
-print("if you want generator <file | alter arg | verifier")
-print("Press 2")
+print("Please enter the path of the input text file:  ")
+input_file_path=input()
 
-required=input()
-#print(required)
-if required=="1":#if you want generator <file | verifier
-    message,g=generator("ymym.txt")
-    verifier(message,g)
+while True :
+    print("if you want generator | verifier")
+    print("Press 1")
+    print("if you want generator | alter | verifier")
+    print("Press 2")
 
-if required=="2":#if you want generator <file | alter arg | verifier
-    index=input("Enter alter index: ")
-    message,g=generator("ymym.txt")
-    if int(index) > (len(message)-len(g)):
-        print("invalid alter value")
-        pass
-    else :    
-        message=alter(message,int(index)-1)
+    required=input()
+    #print(required)
+    if required=="1":#if you want generator <file | verifier
+        message,g=generator(input_file_path)
         verifier(message,g)
+
+    if required=="2":#if you want generator <file | alter arg | verifier
+        index=input("Enter alter index: ")
+        message,g=generator(input_file_path)
+        if int(index) > (len(message)-len(g)):
+            print("invalid alter value")
+            pass
+        else :    
+            message=alter(message,int(index)-1)
+            verifier(message,g)
     print("\n\n")
     print("Try again if you want !")
-
-
-
-
-
