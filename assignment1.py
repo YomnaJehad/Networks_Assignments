@@ -93,10 +93,10 @@ if required=="2":#if you want generator <file | alter arg | verifier
     message,g=generator("ymym.txt")
     if int(index) > (len(message)-len(g)):
         print("invalid alter value")
-            pass
-        else :    
-            message=alter(message,int(index))
-            verifier(message,g)
+        pass
+    else :    
+        message=alter(message,int(index))
+        verifier(message,g)
     print("\n\n")
     print("Try again if you want !")
 
