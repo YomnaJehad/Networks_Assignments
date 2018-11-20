@@ -1,4 +1,4 @@
-def xor(a, b):
+def xor(a, b): #XOR between 2 binary numbers-> output is 0 if they are equal and 1 if they are not equal
     output = []
 
     for i in range(1, len(b)):
@@ -7,7 +7,7 @@ def xor(a, b):
         else:
             output.append('1')
     return ''.join(output)
-def division(data, gen):
+def division(data, gen): #divide the message with the generator using XOR and return the remainder
     stopmark = len(gen)
     tmp = data[0 : stopmark]
     while stopmark < len(data):
@@ -21,10 +21,10 @@ def division(data, gen):
     else:
         tmp = xor('0'*stopmark, tmp)
     result = tmp
-    return result
+    return result #remainder of the division
 
 import numpy as np
-def generator(input_file):
+def generator(input_file): #takes the message and generator then calculates the transmitted data
     m,g=np.loadtxt(input_file, delimiter=" ")
     m=str(int(m))
     g=str(int(g))
@@ -49,11 +49,11 @@ def generator(input_file):
 
 
     m=m[:len(m)-r]
-    message= m+zeros+remainder
+    message= m+zeros+remainder #concatenate the message with some zeros and the remainder for the transmitted data 
     # print("ana gowa generator de el message",message,"w kaman rem",remainder)
     return message,g
 
-def verifier(message,g):
+def verifier(message,g): #it takes the message and generator then print correct if the remainder is zero, esle wrong output
     # print("ana gowa ver w de el mes",message)
     rem=division(message,g)
 
@@ -65,7 +65,7 @@ def verifier(message,g):
 
 
 
-def alter(message,index):
+def alter(message,index): #it changes the bit of number = index in message
     message=list(message)
     if message[index] == "0" :
         message[index]="1"
@@ -75,7 +75,7 @@ def alter(message,index):
     #print("ana gowa alter",message)
     return message
 #-----------------------------------------------
-
+#console presentation
 print("Welcome to YMYM Assignment1")
 print("if you want generator <file | verifier")
 print("Press 1")
@@ -84,11 +84,11 @@ print("Press 2")
 
 required=input()
 #print(required)
-if required=="1":
+if required=="1":#if you want generator <file | verifier
     message,g=generator("ymym.txt")
     verifier(message,g)
 
-if required=="2":
+if required=="2":#if you want generator <file | alter arg | verifier
     index=input("Enter alter index: ")
     message,g=generator("ymym.txt")
     message=alter(message,int(index))
