@@ -95,7 +95,7 @@ if required=="2":#if you want generator <file | alter arg | verifier
         print("invalid alter value")
         pass
     else :    
-        message=alter(message,int(index))
+        message=alter(message,int(index)-1)
         verifier(message,g)
     print("\n\n")
     print("Try again if you want !")
